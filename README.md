@@ -30,7 +30,7 @@ create a new folder called "catkin_explore/src" by executing the following comme
     $ cd ~/catkin_explore
     $ catkin_make
 
-## Ros Param
+## ROS PARAMETER
 constructing...
 
 
