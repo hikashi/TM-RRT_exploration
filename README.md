@@ -33,7 +33,7 @@ create a new folder called "catkin_explore/src" by executing the following comme
 
 ## Issues
 - Optimization of the goal assignment - Since the goal assignment of each AGV is based on the revenue calculation for a given frontier, hence, the goal assignment is quite limited and requires a lot calculations. This can be slow and sub-optimal if the environment being explored is complex.
-- Optimization of _rp_dist_ - Currently, the _rp_dist_ need to be chosen manually for a given environment. The study for adaptive value to optimize the $rp_{dist}$ is yet another issue to address.  
+- Optimization of _rp_dist_ - Currently, the _rp_dist_ need to be chosen manually for a given environment. The study for adaptive value to optimize the _rp_dist_ is yet another issue to address.  
 - Limitation of centralized paradigm - The centralized paradigm requires a server to allocate task to each AGV, which can be challenging in an infrastructure-free environment. To address this issue is not an easy task and ideal solution would be distributed approach, which is one of our next research milestone. 
 - heterogenous robots- The current experiment robot for TM-RRT experiment only consist of three robot with same specifications, the collaboration between different robot with different moving capability is something that we to further study.
 - 3D environment - Currently, our approach only able to support 2D environment, where 3D environment with rough terrain remain a challenge. 
