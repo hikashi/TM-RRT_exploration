@@ -30,6 +30,9 @@ create a new folder called "catkin_explore/src" by executing the following comme
     $ cd ~/catkin_explore
     $ catkin_make
 
+## Ros Param
+constructing...
+
 
 ## Issues
 - Optimization of the goal assignment - Since the goal assignment of each AGV is based on the revenue calculation for a given frontier, hence, the goal assignment is quite limited and requires a lot calculations. This can be slow and sub-optimal if the environment being explored is complex.
