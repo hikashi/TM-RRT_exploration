@@ -11,7 +11,7 @@ There are a few modifications done in order to improve the efficiency of explora
 
 
 ## Requirements
-The following code is exectuted in ROS Melodic in Ubuntu 18.04 LTS
+The following code is exectuted in ROS Melodic in Ubuntu 18.04 LTS, Python 2.7
 
 The following libraries are required to install before proceeding to run the code
 
