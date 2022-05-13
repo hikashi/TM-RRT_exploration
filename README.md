@@ -46,6 +46,16 @@ constructing...
 ## Setting up Simulation for testing
 Constructing...
 
+## Paper / Publication
+Please cite the paper if you are using / comparing our work.
+
+    @Test {test,
+      title = {Multi-AGV's Temporal Memory-based RRT Exploration in Unknown Environment},
+      author = {{Billy~Pik~Lik~Lau, Brandon~Jin~Yang~Ong, Leonard~Kin~Yung~Loh, Ran~Liu, Chau~Yuen, Gim~Song~Soh, and U-Xuan~Tan}},
+      organization = {},
+      address = {},
+      year = {2022},
+    }
 
 ## Issues
 - Optimization of the goal assignment - Since the goal assignment of each AGV is based on the revenue calculation for a given frontier, hence, the goal assignment is quite limited and requires a lot calculations. This can be slow and sub-optimal if the environment being explored is complex.
