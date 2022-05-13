@@ -30,12 +30,21 @@ create a new folder called "catkin_explore/src" by executing the following comme
     $ cd ~/catkin_explore
     $ catkin_make
 
+## TF Tree Requirement
+constructing....
+
+## Demostration of TM-RRT in Clearpath's Jackal
+Kindly refer to the video below for demostration of TM-RRT Exploration:
+
+[![TM-RRT Explorationc](https://img.youtube.com/vi/YS5cFRF53a0/0.jpg)](https://www.youtube.com/watch?v=YS5cFRF53a0 "TM-RRT Exploration")
+
+
 ## ROS PARAMETER
 constructing...
 
 
 ## Setting up Simulation for testing
-Constructing
+Constructing...
 
 
 ## Issues
