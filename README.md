@@ -35,8 +35,9 @@ constructing....
 
 ## Demostration of TM-RRT in Clearpath's Jackal
 Kindly refer to the video below for demostration of TM-RRT Exploration:
+constructing...
 
-[![TM-RRT Explorationc](https://img.youtube.com/vi/YS5cFRF53a0/0.jpg)](https://www.youtube.com/watch?v=YS5cFRF53a0 "TM-RRT Exploration")
+
 
 
 ## ROS PARAMETER
