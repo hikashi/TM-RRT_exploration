@@ -1,17 +1,20 @@
 #!/usr/bin/env python
 import rospy
+import tf
 import numpy as np
 from copy import copy
 from geometry_msgs.msg import Point, PolygonStamped, Polygon, PointStamped
 from nav_msgs.msg import OccupancyGrid
+from nav_msgs.msg import Odometry
 from std_msgs.msg import Header, Bool
 from time import time
 
 #############################################################
 boundary_Pts       = []
 recordedPoints     = []
-startExploration   = True 
+startExploration   = False 
 resetExploration   = False
+odomPts            = [0.0, 0.0]
 
 #############################################################
 def boundaryMapInfoCallback(data):
@@ -57,10 +60,28 @@ def listenResetExplorationCallback(data):
         startExploration  =  False
         resetExploration  =  True
     
+            
+#############################################################
+def listenOdomCallback(data, args):
+    global odomPts # args are listed as follows: 
+    # 0 - listener, 1 - global_frame
+    cond = 0
+    while cond == 0:
+        try:
+            (trans, rot) = args[0].lookupTransform(args[1], data.header.frame_id, rospy.Time(0))
+            cond = 1
+        except (tf.LookupException, tf.ConnectivityException, tf.ExtrapolationException):
+            rospy.sleep(0.11)
+            cond == 0
+            rospy.sleep(0.5) # sleep to combat the spam request to ros network
+    # now making odomPts 
+    odomPts = trans
+    # if no need odom
+    # odomPts = [data.pose.pose.position.x, data.pose.pose.position.y]
 #############################################################
 def node():
     # decide the global parameter for the data and workign on the necessary things for the data
-    global recordedPoints, dataLength, startExploration, resetExploration, boundary_Pts
+    global recordedPoints, dataLength, startExploration, resetExploration, boundary_Pts, odomPts
     rospy.init_node('exploration_boundary', anonymous=False)
 
     # define the rosparam
@@ -77,7 +98,9 @@ def node():
     autoInputPoint= rospy.get_param('~AutoInputPoint', "")   # the auto input point instead of clicked point. (points separated by semicolon; and axis are separated by comma,)
     diagDistance  = rospy.get_param('~diagonal_distance', 7.50)   # the auto input point instead of clicked point. (points separated by semicolon; and axis are separated by comma,)
     mapTopic      = rospy.get_param('~mapTopic', '/map')   # the  name of the topic map subscribe to.
-    initialPoint  = rospy.get_param('~initialStartPts', '1.9,3.19')   # the  name of the topic map subscribe to.
+    initialPoint  = rospy.get_param('~initialStartPts', '1.9,3.19')   # the initial start pts if manually assign start pts
+    odom_topic    = rospy.get_param('~odom_topic_startpts', '/tb3_1/odom')   # odom topic for defining pts
+    robot_frame   = rospy.get_param('~robot_frame', '/tb3_1/base_footprint')   # footprint for converting tf
     # define the odom capture time
     #############################################################
     # preprocess some of the data
@@ -87,6 +110,9 @@ def node():
     rospy.Subscriber(startTopic, Bool, listenStartExplorationCallback)
     rospy.Subscriber(resetTopic, Bool, listenResetExplorationCallback)
     rospy.Subscriber(mapTopic, OccupancyGrid, boundaryMapInfoCallback)
+    listener = tf.TransformListener()
+    # listener.waitForTransform(mapFrame, robot_frame, rospy.Time(0.0), rospy.Duration(10.0))
+    rospy.Subscriber(odom_topic, Odometry, listenOdomCallback, callback_args=[listener, mapFrame])
     #############################################################
     output_start_control  = rospy.Publisher(controlOutput, Bool, queue_size=1)
     restart_control       = rospy.Publisher(restartOutput, Bool, queue_size=1)
@@ -137,14 +163,17 @@ def node():
                     #     rospy.sleep(1.0)
                     #     pass
 
-                    tempStr = initialPoint.split(",")
+                    # tempStr = initialPoint.split(",")
                     pub_point2 = PointStamped()
                     pub_point2.header.frame_id = mapFrame
-                    pub_point2.point.x = float(tempStr[0])
-                    pub_point2.point.y = float(tempStr[1])
+                    # pub_point2.point.x = float(tempStr[0])
+                    # pub_point2.point.y = float(tempStr[1])
+                    pub_point2.point.x = float(odomPts[0])
+                    pub_point2.point.y = float(odomPts[1])
                     pub_point2.point.z = 0.0
                     clicked_point_pub.publish(pub_point2)
                     rospy.sleep(0.7)
+
 
                     # convert to the points for boundary]
                     valid_entry = True
@@ -229,3 +258,73 @@ if __name__ == '__main__':
         node()
     except rospy.ROSInterruptException:
         pass
+ 
+ 
+
+ 
+                # elif len(coordinate_list) == 1:
+                #     point1             = coordinate_list[0].split(",")
+                #     clicked_point_pub  = rospy.Publisher(topicInput, PointStamped, queue_size = 100)
+
+                #     pub_point1 = PointStamped()
+                #     pub_point1.header.frame_id = mapFrame
+                #     pub_point1.point.x = float(point1[0]) + diagDistance
+                #     pub_point1.point.y = float(point1[1]) + diagDistance
+                #     pub_point1.point.z = float(point1[2])
+                #     clicked_point_pub.publish(pub_point1)
+                #     rospy.sleep(1.3)
+
+                #     pub_point2 = PointStamped()
+                #     pub_point2.header.frame_id = mapFrame
+                #     pub_point2.point.x = float(point1[0]) - diagDistance
+                #     pub_point2.point.y = float(point1[1]) + diagDistance
+                #     pub_point2.point.z = float(point1[2])
+                #     clicked_point_pub.publish(pub_point2)
+                #     rospy.sleep(1.3)                
+
+                #     pub_point3 = PointStamped()
+                #     pub_point3.header.frame_id = mapFrame
+                #     pub_point3.point.x = float(point1[0]) - diagDistance
+                #     pub_point3.point.y = float(point1[1]) - diagDistance
+                #     pub_point3.point.z = float(point1[2])
+                #     clicked_point_pub.publish(pub_point3)
+                #     rospy.sleep(1.3)
+                    
+                #     pub_point4 = PointStamped()
+                #     pub_point4.header.frame_id = mapFrame
+                #     pub_point4.point.x = float(point1[0]) + diagDistance
+                #     pub_point4.point.y = float(point1[1]) - diagDistance
+                #     pub_point4.point.z = float(point1[2])
+                #     clicked_point_pub.publish(pub_point4)
+                #     rospy.sleep(1.3)
+
+                #     pub_point5 = PointStamped()
+                #     pub_point5.header.frame_id = mapFrame
+                #     pub_point5.point.x = float(point1[0]) 
+                #     pub_point5.point.y = float(point1[1])
+                #     pub_point5.point.z = float(point1[2])
+                #     clicked_point_pub.publish(pub_point5)
+                #     rospy.sleep(1.3)
+
+
+                #     valid_entry = True
+                # else:
+                    
+                #     for coordinate in coordinate_list:
+                #       point = coordinate.split(",")
+                #       tempPoints = Point()
+                #       tempPoints.x = float(point[0])
+                #       tempPoints.y = float(point[1])
+                #       tempPoints.z = float(point[2])
+                #       recordedPoints.append(tempPoints)
+                #     # publish the point to the clicked point
+                #     clicked_point_pub  = rospy.Publisher(topicInput, PointStamped, queue_size=100)
+                #     clicked_point_pub.publish(recordedPoints)
+
+
+                    # now check whether the recorded points are more
+                # if len(recordedPoints) < 5 or len(recordedPoints) > 5: # can be only 5 points, 4 for boundary and 1 for initial starting point
+                #         rospy.loginfo("Insufficient point to start the exploration")
+                #         startExploration = False
+                # else:
+                #     valid_entry = True
