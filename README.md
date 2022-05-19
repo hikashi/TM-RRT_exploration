@@ -31,7 +31,7 @@ create a new folder called "catkin_explore/src" by executing the following comme
     $ catkin_make
 
 ## TF Tree Requirement
- ![TF_tree_example](/TF_tree_example.png)
+ ![TF_tree_example](/TF_tree_example.PNG)
 
 ## Demostration of TM-RRT in Clearpath's Jackal
 Kindly refer to the video below for demostration of TM-RRT Exploration:
