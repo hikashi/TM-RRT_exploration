@@ -50,7 +50,7 @@ Constructing...
 ## Paper / Publication
 Please cite the paper if you are using / comparing our work.
 
-    @Test {test,
+    @article {lau2022tmrrt,
       title = {Multi-AGV's Temporal Memory-based RRT Exploration in Unknown Environment},
       author = {{Billy~Pik~Lik~Lau, Brandon~Jin~Yang~Ong, Leonard~Kin~Yung~Loh, Ran~Liu, Chau~Yuen, Gim~Song~Soh, and U-Xuan~Tan}},
       conference = {Submitted to IROS 2022},
