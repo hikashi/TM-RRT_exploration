@@ -45,7 +45,13 @@ constructing...
 
 
 ## Setting up Simulation for testing
-Constructing...
+An example of the simulation can be shown in the following video:
+[![TM-RRT Exploration for Ubuntu 18.04 ROS Melodic](https://img.youtube.com/vi/F40GGvnIfsc/0.jpg)](https://www.youtube.com/watch?v=F40GGvnIfsc "TM-RRT Exploration for Ubuntu 18.04 ROS Melodic")
+
+For this work, we only compare against conventional RRT. All are welcome to contribute more for adding more benchmarking algorithms.
+The link for accessing the simulation and the source files are found in the link below:
+[link]
+
 
 ## Paper / Publication
 Please cite the paper if you are using / comparing our work.
