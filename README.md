@@ -114,7 +114,7 @@ An example of the simulation can be shown in the following video:
 
 For this work, we only compare against conventional RRT. All are welcome to contribute more for adding more benchmarking algorithms.
 The link for accessing the simulation and the source files are found in the link below:
-[link]
+[TM-RRT Exploration Simulation](https://github.com/hikashi/TM-RRT_exploration_Simulation "TM-RRT Exploration").
 
 
 ## Paper / Publication
