@@ -37,8 +37,10 @@ create a new folder called "catkin_explore/src" by executing the following comme
 Kindly refer to the video below for demostration of TM-RRT Exploration:
 constructing...
 
-## RUNNING COMMANDS
-Comments for running / executing the TM-RRT exploration
+## Execution Commands 
+Comments for running / executing the TM-RRT exploration after sourcing devel/setup.bash
+
+            $ roslaunch tmrrt_exploration trio_exploration.launch
 
 
 ## ROS PARAMETER
