@@ -38,10 +38,69 @@ Kindly refer to the video below for demostration of TM-RRT Exploration:
 constructing...
 
 
-
-
 ## ROS PARAMETER
-constructing...
+ros parameters for setting up the robot
+- boundary.py
+    - map frame >> map frame for the boundary points to be published
+    - n_point >> number of clicked_points to be used to draw the boundary
+    - start_Topic >> topic input for accepting the input of the boolean start signal
+    - reset_Topic >> topic input for accepting the input of the boolean reset signal
+    - controlOutput >> topic used to publish control signal for start of the data
+    - restartOutput >> topic used to publish reset signal for resetting the exploration
+    - topicOutput >> topic for deciding the boundary drawn 
+    - frequency >> frequency for publishing the boundary geometry
+    - timeInterval >> time interval for displaying the message 
+    - mapTopic >> map topic to subscribe on for performing auto boundary setting
+    - initialPoint >> initial point for the RRT tree to grow
+    - odom_topic >> odom topic for subscribing (just in case not using initial point)
+    - robot_frame >> robot frame where it publishes odom topic
+- filter.py
+    - map_topic >> map topic for subscribing to (merged map in multi-robot scenario)
+    - threshold >> the threshold for defining clearance for filtering frontier with high possibility near to obstacle
+    - info_radius >> information radius used to calculate the revenue
+    - goals_topic >> topic for receiving the detected points of the RRT 
+    - robot_namelist >> robot name list changed to the format of string (robot name separated by comma delimiter)
+    - inv_frontier_topic >> topic for receiving the invalid frontier topic
+    - startSignalTopic >> topic for controlling the start signal 
+    - rateHz >> the frequency for determining rate of computing the filter module node
+    - global_costmap_topic >>  topic of the global costmap for each robotr
+    - local_map_topic >> local map of each robot if requires subscription
+    - bandwith_cluster >> the clustering parameter for each detected point 
+    - robot_frame >> the frame of the robot for performing TF conversion
+    - localMapSub >> subscribing to the local map of each robot
+    - computeCycle >> the compute cycle for performing each cycle just in case the frequency doesnt work as intended
+    - startSignalTopic >> the topic for determining to start the filter module or pause
+    - resetSignalTopic >> reset the filter module to start from scratch
+    - debug1 >> debugs message view for type 1 
+    - debug2 >> debugs message view for type 2
+- assigner.py
+    - map_topic >> the map topic for determining the revenue / information gain for a given frontier
+    - info_radius >> radius to determine the information value of a given frontier
+    - info_multiplier >> multiplier for determining the base value of the information
+    - hysteresis_radius >> radius for inflating the value if the robot is within the designated radius
+    - hysteresis_gain >> the multiplier for the revenue if the robot is within the 
+    - frontiers_topic >> topic for subscribing to from filter module
+    - message_time_interval >> interval for controlling the displaying of the message
+    - delay_after_assignment >> delay after each assignment of the frontier
+    - start_delay >> delay before starting assignment - just in case the filter module a bit slow
+    - rateHz >> frequency for controlling the module publishing speed
+    - inv_points_topic >> topic for publishing invalid points
+    - inv_frontier_topic >> topic for publishing invalid centroids
+    - time_per_meter >> anticipated time needed for robot per meter usage, else the goal will be cancelled
+    - robot_namelist >> robot name list changed to the format of string (robot name separated by comma delimiter
+    - invalid_distance >> if the goal assigned too far away, it will be cancelled based on this distance threshold
+    - rp_metric_distance >> the relative metric distance for calculating the relative distance between robots for adjusting the revenue for each goal
+    - non_interrupt_time >> the minimum time robot can travel before interruption can be done
+    - start_delay >> the time to hold before start exploration
+    - startSignalTopic >> topic for controlling the start signal 
+    - resetSignalTopic >> topic for controlling the reset signal
+    - debugFlag1 >> debugs message view for type 1 
+    - debugFlag2 >>  debugs message view for type 2
+    - global_frame >> frame for sending the goal in the robot class
+    - plan_service >> plan services for planning tracjectory of current robot to the designated goal
+    - base_link >> base link frame for sending the goal (for TF transformation)
+    - move_base_service >> move base services for checking move bases statuses.
+
 
 
 ## Setting up Simulation for testing
