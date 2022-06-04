@@ -37,6 +37,9 @@ create a new folder called "catkin_explore/src" by executing the following comme
 Kindly refer to the video below for demostration of TM-RRT Exploration:
 constructing...
 
+## RUNNING COMMANDS
+Comments for running / executing the TM-RRT exploration
+
 
 ## ROS PARAMETER
 ros parameters for setting up the robot
