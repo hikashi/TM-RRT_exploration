@@ -35,7 +35,14 @@ create a new folder called "catkin_explore/src" by executing the following comme
 
 ## Demostration of TM-RRT in Clearpath's Jackal
 Kindly refer to the video below for demostration of TM-RRT Exploration:
-constructing...
+- three robots (Clearpath's Jackal)
+
+[![TM-RRT Exploration for Three Jackals](https://img.youtube.com/vi/rtFwfaKPcMw/0.jpg)](https://www.youtube.com/watch?v=rtFwfaKPcMw "TM-RRT Exploration for three Jackals")
+
+- two different ground robots (Jackal and Ghost Vision 60)
+
+[![TM-RRT Exploration for two different robots](https://img.youtube.com/vi/y49VpjyBovw/0.jpg)](https://www.youtube.com/watch?v=y49VpjyBovw "TM-RRT Exploration for two different robots")
+
 
 ## Execution Commands 
 Comments for running / executing the TM-RRT exploration after sourcing devel/setup.bash
