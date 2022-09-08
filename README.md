@@ -129,13 +129,18 @@ The link for accessing the simulation and the source files are found in the link
 ## Paper / Publication
 Please cite the paper if you are using / comparing our work.
 
-    @article {lau2022tmrrt,
-      title = {Multi-AGV's Temporal Memory-based RRT Exploration in Unknown Environment},
-      author = {{Billy~Pik~Lik~Lau, Brandon~Jin~Yang~Ong, Leonard~Kin~Yung~Loh, Ran~Liu, Chau~Yuen, Gim~Song~Soh, and U-Xuan~Tan}},
-      conference = {Submitted to IROS 2022},
-      year = {2022},
-    }
-
+        @article{lau2022multi,
+          title={Multi-AGV's Temporal Memory-Based RRT Exploration in Unknown Environment},
+          author={Lau, Billy Pik Lik and Ong, Brandon Jin Yang and Loh, Leonard Kin Yung and Liu, Ran and Yuen, Chau and Soh, Gim Song and Tan, U-Xuan},
+          journal={IEEE Robotics and Automation Letters},
+          volume={7},
+          number={4},
+          pages={9256--9263},
+          year={2022},
+          publisher={IEEE}
+        }
+        
+        
 ## Issues
 - Optimization of the goal assignment - Since the goal assignment of each AGV is based on the revenue calculation for a given frontier, hence, the goal assignment is quite limited and requires a lot calculations. This can be slow and sub-optimal if the environment being explored is complex.
 - Optimization of _rp_dist_ - Currently, the _rp_dist_ need to be chosen manually for a given environment. The study for adaptive value to optimize the _rp_dist_ is yet another issue to address.  
