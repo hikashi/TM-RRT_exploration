@@ -1,4 +1,4 @@
-# Temporal Memory-based RRT Exploration
+# Temporal Memory-based RRT (TM-RRT) Exploration
 This is a temporal memory-based rapidly-exploring random tree (TM-RRT) algorithm, which is based on the original RRT exploration by Hassan Umari.
 
 credit to hasauino for creating the RRT exploration packages.
