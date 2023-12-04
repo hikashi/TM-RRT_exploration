@@ -1,4 +1,4 @@
-# Temporal Memory-based RRT (TM-RRT) Exploration
+# Temporal Memory-based RRT (TM-RRT) Exploration (ROS-Melodic)
 This is a temporal memory-based rapidly-exploring random tree (TM-RRT) algorithm, which is based on the original RRT exploration by Hassan Umari.
 
 credit to Hasauino for creating the RRT exploration packages.
