@@ -24,6 +24,7 @@ The following libraries are required to be installed before proceeding to run th
     $ sudo apt-get install python-opencv
     $ sudo apt-get install python-numpy
     $ sudo apt-get install python-scikits-learn
+    $ sudo apt-get install ros-noetic-multirobot-map-merge
     
 ## Installation Process
 Create a new folder called "catkin_explore/src" by executing the following comment:
