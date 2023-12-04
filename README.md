@@ -11,12 +11,12 @@ There are a few modifications done in order to improve the efficiency of explora
 
 
 ## Requirements
-The following code is executed in ROS Melodic in Ubuntu 18.04 LTS, Python 2.7
+The following code is executed in ROS noetic in Ubuntu 18.04 LTS, Python 2.7
 
 The following libraries are required to be installed before proceeding to run the code
 
-    $ sudo apt-get install ros-melodic-gmapping
-    $ sudo apt-get install ros-melodic-navigation
+    $ sudo apt-get install ros-noetic-gmapping
+    $ sudo apt-get install ros-noetic-navigation
     $ sudo apt-get install python-opencv
     $ sudo apt-get install python-numpy
     $ sudo apt-get install python-scikits-learn
@@ -118,7 +118,7 @@ ros parameters for setting up the robot
 ## Setting up Simulation for testing
 An example of the simulation can be shown in the following video: 
 
-[![TM-RRT Exploration for Ubuntu 18.04 ROS Melodic](https://img.youtube.com/vi/F40GGvnIfsc/0.jpg)](https://www.youtube.com/watch?v=F40GGvnIfsc "TM-RRT Exploration for Ubuntu 18.04 ROS Melodic")
+[![TM-RRT Exploration for Ubuntu 18.04 ROS noetic](https://img.youtube.com/vi/F40GGvnIfsc/0.jpg)](https://www.youtube.com/watch?v=F40GGvnIfsc "TM-RRT Exploration for Ubuntu 18.04 ROS noetic")
 
 
 For this work, we only compare against conventional RRT. All are welcome to contribute more to adding more benchmarking algorithms.
