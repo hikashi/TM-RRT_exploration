@@ -1,4 +1,5 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
+
 import rospy
 import tf
 import numpy as np
@@ -12,7 +13,7 @@ from time import time
 #############################################################
 boundary_Pts       = []
 recordedPoints     = []
-startExploration   = False 
+startExploration   = True 
 resetExploration   = False
 odomPts            = [0.0, 0.0]
 
@@ -146,6 +147,7 @@ def node():
                         print('waiting for the boundary points to be calculated')
                         pass
                     # now publishing the clicked point.
+                    rospy.sleep(2.0)
                     for point in boundary_Pts:
                         pub_point1 = PointStamped()
                         pub_point1.header.frame_id = mapFrame
@@ -153,7 +155,7 @@ def node():
                         pub_point1.point.y = float(point[1])
                         pub_point1.point.z = 0.0
                         clicked_point_pub.publish(pub_point1)
-                        rospy.sleep(0.5)
+                        rospy.sleep(1.5)
 
                     # now waiting for the user input.
                     # while len(recordedPoints) < (n_point):
@@ -163,13 +165,13 @@ def node():
                     #     rospy.sleep(1.0)
                     #     pass
 
-                    # tempStr = initialPoint.split(",")
+                    tempStr = initialPoint.split(",")
                     pub_point2 = PointStamped()
                     pub_point2.header.frame_id = mapFrame
-                    # pub_point2.point.x = float(tempStr[0])
-                    # pub_point2.point.y = float(tempStr[1])
-                    pub_point2.point.x = float(odomPts[0])
-                    pub_point2.point.y = float(odomPts[1])
+                    pub_point2.point.x = float(tempStr[0])
+                    pub_point2.point.y = float(tempStr[1])
+                    # pub_point2.point.x = float(odomPts[0])
+                    # pub_point2.point.y = float(odomPts[1])
                     pub_point2.point.z = 0.0
                     clicked_point_pub.publish(pub_point2)
                     rospy.sleep(0.7)
