@@ -1,6 +1,9 @@
 
 # Temporal Memory-based RRT (TM-RRT) Exploration (ROS Noetic)
 
+Simulation of the TM-RRT Exploration based on ROS Noetic can be found here:
+[TM-RRT Exploration Simulation](https://github.com/hikashi/TM-RRT_exploration_Simulation "TM-RRT Exploration").
+
 This is a temporal memory-based rapidly-exploring random tree (TM-RRT) algorithm, which is based on the original RRT exploration by Hassan Umari.
 
 credit to Hasauino for creating the RRT exploration packages.
