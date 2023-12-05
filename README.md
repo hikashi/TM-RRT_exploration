@@ -1,7 +1,5 @@
+
 # Temporal Memory-based RRT (TM-RRT) Exploration (ROS Noetic)
-
-**(Under Construction)**
-
 
 This is a temporal memory-based rapidly-exploring random tree (TM-RRT) algorithm, which is based on the original RRT exploration by Hassan Umari.
 
@@ -15,25 +13,29 @@ There are a few modifications done in order to improve the efficiency of explora
 
 
 ## Requirements
-The following code is executed in ROS noetic in Ubuntu 18.04 LTS, Python 2.7
+The following code is executed in ROS noetic in Ubuntu 20.04 LTS, Python 3.X
 
 The following libraries are required to be installed before proceeding to run the code
 
     $ sudo apt-get install ros-noetic-gmapping
     $ sudo apt-get install ros-noetic-navigation
-    $ sudo apt-get install python-opencv
-    $ sudo apt-get install python-numpy
-    $ sudo apt-get install python-scikits-learn
-    $ sudo apt-get install ros-noetic-multirobot-map-merge
+    $ sudo apt-get install python3-pip
+    $ pip3 install scikit-learn
     
 ## Installation Process
 Create a new folder called "catkin_explore/src" by executing the following comment:
 
     $ sudo mkdir -p ~/catkin_explore/src
     $ cd ~/catkin_explore/src/
-    $ git clone https://github.com/hikashi/TM-RRT_exploration.git
+    $ git clone -b main-Noetic https://github.com/hikashi/TM-RRT_exploration.git
     $ cd ~/catkin_explore
     $ catkin_make
+
+## Fixing error of "Make sure file exists in package path and permission is set to executable (chmod +x)"
+This is probably due to the files being copy over from the github.
+This can be solved using the following commands:
+
+	$ chmod +x ~/catkin_explore/TM-RRT_exploration/tm_rrt_exploration/scripts/*
 
 ## TF Tree Requirement
  ![TF_tree_example](/TF_tree_example.PNG)
@@ -150,5 +152,5 @@ Please cite the paper if you are using/comparing our work.
 - Optimization of the goal assignment - Since the goal assignment of each AGV is based on the revenue calculation for a given frontier, hence, the goal assignment is quite limited and requires a lot of calculations. This can be slow and sub-optimal if the environment being explored is complex.
 - Optimization of _rp_dist_ - Currently, the _rp_dist_ need to be chosen manually for a given environment. The study for adaptive value to optimize the _rp_dist_ is yet another issue to address.  
 - Limitation of centralized paradigm - The centralized paradigm requires a server to allocate tasks to each AGV, which can be challenging in an infrastructure-free environment. To address this issue is not an easy task and the ideal solution would be a distributed approach, which is one of our next research milestones. 
-- Heterogeneous robots- The current experiment robot for TM-RRT experiment only consist of three robots with the same specifications, the collaboration between different robot with different moving capability is something that we to further study.
+- Heterogeneous robots- The current experiment robot for TM-RRT experiment only consist of three robots with the same specifications, the collaboration between different robot with different moving capability is something that we want to study in future.
 - 3D environment - Currently, our approach is only able to support 2D environments, where 3D environments with rough terrain remain a challenge. 
