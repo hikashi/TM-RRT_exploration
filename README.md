@@ -8,7 +8,7 @@ credit to Hasauino for creating the RRT exploration packages.
 [RRT Exploration package](https://github.com/hasauino/rrt_exploration "RRT Exploration").
 [RRT Exploration Tutorial package](https://github.com/hasauino/rrt_exploration_tutorials "RRT Exploration").
 
-There are a few modifications done in order to improve the efficiency of exploration, which are mainly focused on the assigner module.
+There are a few modifications done to improve the efficiency of exploration, which are mainly focused on the assigner module.
 - memory-based assigner, where the assigner keeps track of the goal history and prevents other robots from exploring the same location
 - time limit imposed on the goal based on the expected velocity to prevent the robot from spending time on an unreachable goal.
 
@@ -113,7 +113,7 @@ ros parameters for setting up the robot
     - debugFlag1 >> debugs message view for type 1 
     - debugFlag2 >>  debugs message view for type 2
     - global_frame >> frame for sending the goal in the robot class
-    - plan_service >> plan services for planning the trajectory of current robot to the designated goal
+    - plan_service >> plan services for planning the trajectory of the current robot to the designated goal
     - base_link >> base link frame for sending the goal (for TF transformation)
     - move_base_service >> move base services for checking move bases statuses.
 
@@ -149,5 +149,5 @@ Please cite the paper if you are using/comparing our work.
 - Optimization of the goal assignment - Since the goal assignment of each AGV is based on the revenue calculation for a given frontier, hence, the goal assignment is quite limited and requires a lot of calculations. This can be slow and sub-optimal if the environment being explored is complex.
 - Optimization of _rp_dist_ - Currently, the _rp_dist_ need to be chosen manually for a given environment. The study for adaptive value to optimize the _rp_dist_ is yet another issue to address.  
 - Limitation of centralized paradigm - The centralized paradigm requires a server to allocate tasks to each AGV, which can be challenging in an infrastructure-free environment. To address this issue is not an easy task and the ideal solution would be a distributed approach, which is one of our next research milestones. 
-- Heterogeneous robots- The current experiment robot for TM-RRT experiment only consist of three robots with the same specifications, the collaboration between different robot with different moving capability is something that we to further study.
+- Heterogeneous robots- The current experiment robot for the TM-RRT experiment only consists of three robots with the same specifications, the collaboration between different robots with different moving capabilities is something that we want to further study.
 - 3D environment - Currently, our approach is only able to support 2D environments, where 3D environments with rough terrain remain a challenge. 
